@@ -7,7 +7,10 @@ module MIPPeR
                           File.dirname(__FILE__))
 
     extend FFI::Library
-    ffi_lib 'gurobi'
+    #ffi_lib '/opt/libgurobi.so'
+    ffi_lib '/Library/gurobi811/mac64/lib/libgurobi81.dylib'
+    #ffi_lib ENV['GUROBI_LIB']
+    #ffi_lib 'gurobi'
 
     attach_function :GRBloadenv, [:pointer, :string], :int
     attach_function :GRBsetintparam, [:pointer, :string, :int], :int
